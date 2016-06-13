@@ -1,0 +1,10 @@
+prefix: /payable/
+currency: BTC
+service:
+  - host: clarify
+    port: 7313
+    routes:
+    - route: tag
+      price: 2
+    - route: rotate
+      price: 1
