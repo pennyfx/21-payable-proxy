@@ -2,6 +2,7 @@
 
 Place a payment required proxy in front of any docker service and make it payable.
 
+
 Configuration is based on the following yaml format.
 
 ```yaml
@@ -29,18 +30,21 @@ service:
 ```
 # build
 
-$ docker build -t two1proxy/3 .
-$ docker run --name two1proxy -p 8928:5000 -v ~/21proxy/config2:/config/ --link clarify:clarify  -v ~/.two1/:/root/.two1/ -d two1proxy/3
+$ docker build -t two1proxy/4 .
+$ docker run --name two1proxy -p 8928:5000 -v ~/21proxy/config:/config/ --link clarify:clarify  -v ~/.two1/:/root/.two1/ -d two1proxy/4
 
 # Use --link to add a hosts file entry for the service you want to proxy.
-# There are two volume mount points for configuration and a 21.co Wallet.
+# There are two volume mount points for configuration yaml file and a 21.co Wallet.
+
+$ 21 buy http://192.168.59.103:8928/tag?url=https://samples.clarifai.com/wedding.jpg
 
 ```
 
 ### TODO
 
-- Add fiat prices
-- Add route mapping
-- Add POST support
-- Add tests
+- fiat prices
+- route mapping, if needed
+- ~~POST support~~
+- add tests
+- round-robin if many of the same services are defined
 
