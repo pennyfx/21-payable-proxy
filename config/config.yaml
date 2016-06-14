@@ -5,6 +5,6 @@ service:
     port: 7313
     routes:
     - route: tag
-      price: 2
-    - route: rotate
-      price: 1
+      price: 1000
+    - route: color
+      price: 1000
