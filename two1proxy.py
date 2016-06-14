@@ -32,6 +32,7 @@ def get_service_fee(request):
 @app.route(config['prefix'] +'<path:path>', methods=['GET', 'POST'])
 @payment.required(get_service_fee)
 def catch_all(path):
+    # check if service is handling this request
     match = config['routes'].get(path, None)
     if match:
       # call service
@@ -41,7 +42,10 @@ def catch_all(path):
         return r.text, r.status_code
       elif request.method == "POST":
         # TODO: handle post
-        r = requests.post('http://' + match['host'] + ':' + match['port'] + '/' + path)
+        r = requests.post(
+          'http://' + match['host'] + ':' + match['port'] + '/' + path,
+          data = request.data
+        );
         return r.text
     else:
       return 404
