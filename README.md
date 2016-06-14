@@ -3,6 +3,8 @@
 Place a payment required proxy in front of any docker service and make it payable.
 
 
+## yaml Config
+
 Configuration is based on the following yaml format.
 
 ```yaml
@@ -15,7 +17,7 @@ currency: BTC
 # registered services
 service:
 # docker service name
-  - host: clarify
+  - host: tagservice
 # docker service port
     port: 7313
 # routes that this service handles
@@ -27,18 +29,37 @@ service:
 
 ```
 
+## Build
 ```
-# build
+$ docker build -t two1proxy/1 .
+```
 
-$ docker build -t two1proxy/4 .
-$ docker run --name two1proxy -p 8928:5000 -v ~/21proxy/config:/config/ --link clarify:clarify  -v ~/.two1/:/root/.two1/ -d two1proxy/4
+## Run
+```
+$ docker run --name two1proxy -p 8928:5000 -v ~/21proxy/config:/config/ --link tagservice:tagservice  -v ~/.two1/:/root/.two1/ -d two1proxy/1
+```
 
-# Use --link to add a hosts file entry for the service you want to proxy.
-# There are two volume mount points for configuration yaml file and a 21.co Wallet.
+### Link
+Use `--link` to add a hosts file entry for the service(s) you want to proxy.
 
-$ 21 buy http://192.168.59.103:8928/tag?url=https://samples.clarifai.com/wedding.jpg
+### Volumes
+`/config/` - yaml file with services routes to proxy and fees
+`/root/.two1/ ` -  21 wallet to use
+
+## 21 Buy Example
+```
+# if you have a tagging service behind the proxy, call it like so.
+
+$ 21 buy http://[dockerip]:8928/tag?url=http://i.imgur.com/aNJjbfC.jpg
 
 ```
+
+### Notes:
+
+Only supports GET and POST for now.
+
+
+
 
 ### TODO
 
