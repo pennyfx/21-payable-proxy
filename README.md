@@ -50,7 +50,7 @@ Use `--link` to add a hosts file entry for the service(s) you want to proxy.
 ```
 # if you have a tagging service behind the proxy, call it like so.
 
-$ 21 buy http://[dockerip]:8928/tag?url=http://i.imgur.com/aNJjbfC.jpg
+$ 21 buy http://[dockerip]:8928/payable/tag?url=http://i.imgur.com/aNJjbfC.jpg
 
 ```
 

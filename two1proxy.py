@@ -41,7 +41,6 @@ def catch_all(path):
         r = requests.get(service_get)
         return r.text, r.status_code
       elif request.method == "POST":
-        # TODO: handle post
         r = requests.post(
           'http://' + match['host'] + ':' + match['port'] + '/' + path,
           data = request.data
