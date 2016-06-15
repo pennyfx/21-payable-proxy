@@ -35,14 +35,15 @@ def catch_all(path):
     # check if service is handling this request
     match = config['routes'].get(path, None)
     if match:
+      destination = match.get('destination', path);
       # call service
       if request.method == 'GET':
-        service_get = 'http://' + match['service']['host'] + ':' + str(match['service']['port']) + '/' + path + '?' + request.query_string.decode("utf-8")
+        service_get = 'http://' + match['service']['host'] + ':' + str(match['service']['port']) + '/' + destination + '?' + request.query_string.decode("utf-8")
         r = requests.get(service_get)
         return r.text, r.status_code
       elif request.method == "POST":
         r = requests.post(
-          'http://' + match['host'] + ':' + match['port'] + '/' + path,
+          'http://' + match['host'] + ':' + match['port'] + '/' + destination,
           data = request.data
         );
         return r.text
