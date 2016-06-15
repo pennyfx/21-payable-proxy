@@ -64,8 +64,11 @@ Only supports GET and POST for now.
 ### TODO
 
 - fiat prices
-- route mapping, if needed
+- ~~route mapping~~
 - ~~POST support~~
 - add tests
 - round-robin if many of the same services are defined
 
+### License
+
+MIT
