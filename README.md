@@ -17,14 +17,15 @@ currency: BTC
 # registered services
 service:
 # docker service name
-  - host: tagservice
+  - host: imgservice
 # docker service port
     port: 7313
 # routes that this service handles
     routes:
     - route: tag
       price: 2000
-    - route: rotate
+    - route: colorify
+      destination: color
       price: 1000
 
 ```
