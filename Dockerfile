@@ -1,5 +1,5 @@
 FROM python:3-onbuild
-#RUN addgroup -S two1 && adduser -S -G two1 two1
+MAINTAINER "Arron Schaar"
 
 ENV CONFIG_DIR "/config/"
 
