@@ -10,7 +10,7 @@ def load_yaml_config():
     except yaml.YAMLError as exc:
       print(exc)
 
-# reformats config to we can easily look up
+# reformats config so we can easily look up
 # service urls by incoming request route
 def remap_services(config):
   config['routes'] = {}
