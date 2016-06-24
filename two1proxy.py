@@ -46,7 +46,7 @@ def catch_all(path):
           'http://' + match['host'] + ':' + match['port'] + '/' + destination,
           data = request.data
         );
-        return r.text
+        return r.text, r.status_code
     else:
       return 404
 
